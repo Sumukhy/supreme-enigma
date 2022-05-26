@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:accident_detection/widget/custom_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -155,8 +156,8 @@ class MyAuth {
     kLogger.d("Logout event occured");
 
     // FirebaseMessaging.instance.unsubscribeFromTopic("all");
-    // FirebaseMessaging.instance
-    //     .unsubscribeFromTopic(MyAuth().getCurrentUserId());
+    FirebaseMessaging.instance
+        .unsubscribeFromTopic(MyAuth().getCurrentUserId());
 
     InitData().clearAll();
 

@@ -38,7 +38,7 @@ dependencies:
   firebase_core: ^1.15.0
   # firebase_crashlytics: ^2.2.2
   url_launcher: ^6.0.12
-  # firebase_messaging: ^10.0.8
+  firebase_messaging: ^11.4.0
   flutter_local_notifications: ^9.0.0
   flutter_progress_hud: ^2.0.0
   get: ^4.3.8

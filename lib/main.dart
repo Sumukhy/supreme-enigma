@@ -1,5 +1,6 @@
 import 'package:accident_detection/pages/init_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,13 +9,13 @@ import 'package:get/get.dart';
 import 'constants.dart';
 import 'service/notification_handler.dart';
 
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//   await Firebase.initializeApp();
-//   kLogger.i("Handling a background message: ${message.messageId}");
-//   kLogger.i("main notification id ${message.data["id"]}");
-//   kLogger.i(message.data);
-//   await NotificationHandler.showNotification(message);
-// }
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  kLogger.i("Handling a background message: ${message.messageId}");
+  kLogger.i("main notification id ${message.data["id"]}");
+  kLogger.i(message.data);
+  await NotificationHandler.showNotification(message);
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+      print("onMessageOpenedApp: $message");
+
+      print("show map = ${message.data["lat"]}");
+    });
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,

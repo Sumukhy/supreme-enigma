@@ -30,8 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   // TextEditingController userEmailController = TextEditingController();
 
-  final TextEditingController _password =
-      TextEditingController(text: "sumukh111");
+  final TextEditingController _password = TextEditingController(text: "");
   String? password;
   double? passwordStrength;
   String passwordStatus = "";
@@ -39,7 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
   bool showPasswordStrength = false;
 
   final TextEditingController _confirmpassword =
-      TextEditingController(text: "sumukh111");
+      TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {

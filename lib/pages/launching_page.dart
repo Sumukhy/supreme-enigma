@@ -4,6 +4,7 @@ import 'package:accident_detection/service/auth.dart';
 import 'package:accident_detection/service/firebase_service.dart';
 import 'package:accident_detection/service/init_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -41,6 +42,9 @@ class _LoadInitDataandLaunchingPageState
           //     ),
           //   );
           // }
+          FirebaseMessaging.instance
+              .subscribeToTopic(MyAuth().getCurrentUserId());
+
           return LaunchingPage();
         } else {
           return const Scaffold(
