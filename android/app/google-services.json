@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "697549858328",
+    "project_id": "amw-firebase",
+    "storage_bucket": "amw-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697549858328:android:c29d328d3b96ae48d3056d",
+        "android_client_info": {
+          "package_name": "com.example.accident_detection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697549858328-4njbaqruiddr80dhit3mtobplursjq54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwdOgiyokzdMxjKWtAPeLruazBG2SelYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697549858328-4njbaqruiddr80dhit3mtobplursjq54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
