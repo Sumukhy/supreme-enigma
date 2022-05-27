@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
       print("onMessageOpenedApp: $message");
 
       print("show map = ${message.data["lat"]}");
+      MapsLauncher.launchCoordinates(double.parse(message.data["lat"]),
+          double.parse(message.data["long"]), "Accident Location");
+      // loadMaps(message.data["lat"], message.data["long"]);
     });
 
     SystemChrome.setPreferredOrientations([
