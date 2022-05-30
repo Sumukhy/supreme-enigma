@@ -155,9 +155,10 @@ class MyAuth {
   static Future<void> logout() async {
     kLogger.d("Logout event occured");
 
-    // FirebaseMessaging.instance.unsubscribeFromTopic("all");
     FirebaseMessaging.instance
         .unsubscribeFromTopic(MyAuth().getCurrentUserId());
+
+    FirebaseMessaging.instance.unsubscribeFromTopic('all');
 
     InitData().clearAll();
 

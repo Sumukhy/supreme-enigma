@@ -34,9 +34,15 @@ class MyApp extends StatelessWidget {
       print("onMessageOpenedApp: $message");
 
       print("show map = ${message.data["lat"]}");
-      MapsLauncher.launchCoordinates(double.parse(message.data["lat"]),
-          double.parse(message.data["long"]), "Accident Location");
-      // loadMaps(message.data["lat"], message.data["long"]);
+      if (message.data.containsKey('bloodgroup')) {
+        MapsLauncher.launchCoordinates(
+            double.parse(message.data["lat"]),
+            double.parse(message.data["long"]),
+            "This area requests the gift of your blood(${message.data["bloodgroup"]}).");
+      } else {
+        MapsLauncher.launchCoordinates(double.parse(message.data["lat"]),
+            double.parse(message.data["long"]), "Accident Location");
+      }
     });
 
     SystemChrome.setPreferredOrientations([

@@ -1,6 +1,9 @@
 import 'package:accident_detection/constants.dart';
 import 'package:accident_detection/models/user_data.dart';
 import 'package:accident_detection/widget/show_error_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'auth.dart';
 
 class InitData {
   static UserData? owner;
@@ -9,27 +12,7 @@ class InitData {
     if (owner != null) {
       return this;
     }
-    UserData? user;
-    // await FirestoreService().getSingleUser(MyAuth().getCurrentUserId());
-
-    /// if user data not found in mongodb
-    if (user == null) {
-      bool success = false;
-      // await UserAWSSevice().createUser();
-      if (success) {
-        UserData? usernew;
-        // await UserAWSSevice().getSingleUser(MyAuth().getCurrentUserId());
-        if (usernew == null) {
-          showErrorDialog("Something went wrong", "Please try after sometime");
-        } else {
-          owner = usernew;
-        }
-      } else {
-        showErrorDialog("Something went wrong", "Please try after sometime");
-      }
-    } else {
-      owner = user;
-    }
+    await getUserData();
     kLogger.i(owner);
     return this;
   }
@@ -43,4 +26,18 @@ class InitData {
   void clearAll() {
     owner = null;
   }
+}
+
+Future<UserData?> getUserData() async {
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(MyAuth().getCurrentUserId())
+      .get()
+      .then((value) {
+    if (value.exists) {
+      kLogger.d(value.data());
+      InitData.owner = UserData.fromJson(value.data()!);
+      return InitData.owner;
+    }
+  });
 }
