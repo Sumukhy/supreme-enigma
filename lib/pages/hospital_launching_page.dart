@@ -74,10 +74,11 @@ class _HospitalLaunchingPageState extends State<HospitalLaunchingPage> {
                           setState(() {
                             loading = true;
                           });
+                          String dispVal = selectedValue.replaceAll('+', '%2B');
 
                           http
                               .get(Uri.parse(
-                                  'https://amw.pythonanywhere.com/hospitaltrigger?lat=$latitude&long=$longitude&bloodgroup=${selectedValue}'))
+                                  'https://amw.pythonanywhere.com/hospitaltrigger?lat=$latitude&long=$longitude&bloodgroup=${dispVal}'))
                               .then((response) {
                             print('Response status: ${response.statusCode}');
                             print('Response body: ${response.body}');

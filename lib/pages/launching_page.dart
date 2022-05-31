@@ -138,7 +138,7 @@ class _LaunchingPageState extends State<LaunchingPage> {
                       ),
                     );
                   },
-                  child: const Text("Guidelines"),
+                  child: const Text("Virtual First Aid Guidelines"),
                 )
               : InitData.owner!.userType == "police"
                   ? Image.asset('asset/a.PNG')
