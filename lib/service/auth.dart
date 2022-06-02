@@ -35,13 +35,22 @@ class MyAuth {
   }
 
   Future<bool> signUpWithEmail(
-      BuildContext context, String email, String password, String role) async {
+      BuildContext context,
+      String email,
+      String password,
+      String role,
+      String departmentID,
+      String familyName,
+      String familyEmail) async {
     bool signUpStatus;
     kWaitingForVerification = true;
     try {
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      await FirestoreService().addUserData(email, role, user.user!.uid);
+      await FirestoreService().addUserData(email, role, user.user!.uid,
+          departmentID: departmentID,
+          familyEmail: familyEmail,
+          familyName: familyName);
       // await FirebaseAuth.instance.currentUser!.sendEmailVerification();
       signUpStatus = true;
     } on FirebaseAuthException catch (error) {

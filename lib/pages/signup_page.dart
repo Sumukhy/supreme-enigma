@@ -31,6 +31,10 @@ class _SignUpPageState extends State<SignUpPage> {
   // TextEditingController userEmailController = TextEditingController();
 
   final TextEditingController _password = TextEditingController(text: "");
+  final TextEditingController _departmentID = TextEditingController(text: "");
+  final TextEditingController _familyName = TextEditingController(text: "");
+  final TextEditingController _familyEmail = TextEditingController(text: "");
+
   String? password;
   double? passwordStrength;
   String passwordStatus = "";
@@ -148,6 +152,120 @@ class _SignUpPageState extends State<SignUpPage> {
                               },
                             ),
                           ),
+                          category == "user"
+                              ? Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: customInputDecoration(
+                                          "Family Member Name",
+                                          SizedBox(),
+                                          Icon(Icons.person),
+                                        ),
+                                        controller: _familyName,
+                                        validator: (val) {
+                                          if (val!.isEmpty) {
+                                            return "Please enter family member name";
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: customInputDecoration(
+                                          "Family Email ID",
+                                          SizedBox(),
+                                          Icon(Icons.email),
+                                        ),
+                                        controller: _familyEmail,
+                                        validator: (val) {
+                                          if (val!.isEmpty) {
+                                            return "Please enter password to confirm";
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    decoration: customInputDecoration(
+                                      "Department ID",
+                                      SizedBox(),
+                                      Icon(Icons.assured_workload_outlined),
+                                    ),
+                                    controller: _confirmpassword,
+                                    validator: (val) {
+                                      if (val!.isEmpty) {
+                                        return "Please enter department ID";
+                                      } else if (category == "hospital" &&
+                                          ![
+                                            "HOSPITAL1EW18CS140",
+                                            "HOSPITAL1EW18CS141",
+                                            "HOSPITAL1EW18CS142",
+                                            "HOSPITAL1EW18CS143",
+                                            "HOSPITAL1EW18CS144",
+                                            "HOSPITAL1EW18CS145",
+                                            "HOSPITAL1EW18CS146",
+                                            "HOSPITAL1EW18CS147",
+                                            "HOSPITAL1EW18CS148",
+                                            "HOSPITAL1EW18CS149",
+                                            "HOSPITAL1EW18CS150",
+                                            "HOSPITAL1EW18CS171",
+                                            "HOSPITAL1EW18CS172",
+                                            "HOSPITAL1EW18CS173",
+                                            "HOSPITAL1EW18CS174",
+                                            "HOSPITAL1EW18CS175",
+                                            "HOSPITAL1EW18CS176",
+                                            "HOSPITAL1EW18CS177",
+                                            "HOSPITAL1EW18CS178",
+                                            "HOSPITAL1EW18CS179",
+                                            "HOSPITAL1EW18CS180"
+                                          ].contains(val.toUpperCase())) {
+                                        return "Invalid Hospital ID";
+                                      } else if (category == "police" &&
+                                          ![
+                                            "POLICE1EW18CS01",
+                                            "POLICE1EW18CS02",
+                                            "POLICE1EW18CS03",
+                                            "POLICE1EW18CS04",
+                                            "POLICE1EW18CS05",
+                                            "POLICE1EW18CS06",
+                                            "POLICE1EW18CS07",
+                                            "POLICE1EW18CS08",
+                                            "POLICE1EW18CS09",
+                                            "POLICE1EW18CS10",
+                                            "POLICE1EW18CS11",
+                                            "POLICE1EW18CS12",
+                                            "POLICE1EW18CS13",
+                                            "POLICE1EW18CS14",
+                                            "POLICE1EW18CS15",
+                                            "POLICE1EW18CS16",
+                                            "POLICE1EW18CS17",
+                                            "POLICE1EW18CS18",
+                                            "POLICE1EW18CS19",
+                                            "POLICE1EW18CS20"
+                                          ].contains(val.toUpperCase())) {
+                                        return "Invalid Station ID";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ),
+                                ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -318,7 +436,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                 context,
                                 userEmailController.text,
                                 _password.text,
-                                category);
+                                category,
+                                _departmentID.text,
+                                _familyName.text,
+                                _familyEmail.text);
 
                             progress.dismiss();
                             if (signUpSucess) {
@@ -337,6 +458,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               // userEmailController.text = "";
                               _password.text = "";
                               _confirmpassword.text = "";
+                              _familyEmail.text = "";
+                              _familyName.text = "";
                             }
                           }
                         },

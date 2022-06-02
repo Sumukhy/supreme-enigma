@@ -1,4 +1,4 @@
-name: accident_detection
+name: AMW
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -48,6 +48,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   geolocator: ^8.2.0
   cloud_firestore: ^3.1.13
+  firebase_storage: ^10.2.17
   http:
 
 dev_dependencies:
