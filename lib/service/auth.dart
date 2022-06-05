@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:accident_detection/widget/custom_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../widget/custom_dialog.dart';
 import 'firebase_service.dart';
 import 'init_data.dart';
 

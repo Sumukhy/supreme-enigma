@@ -51,7 +51,7 @@ Future<bool> uploadEvidence(
     File file, String vno, String lat, String lon) async {
   DateTime _now = DateTime.now();
   String timestamp =
-      "${_now.hour}:${_now.minute}:${_now.second}.${_now.millisecond}";
+      "${_now.day}/${_now.month}/${_now.year}  ${_now.hour}:${_now.minute}:${_now.second}.${_now.millisecond}";
   String url = await uploadFile(file);
   try {
     await FirebaseFirestore.instance.collection('evidence').doc().set({
@@ -69,7 +69,8 @@ Future<bool> uploadEvidence(
 }
 
 Future<String> uploadFile(File file) async {
-  String filename = file.path.split("/")[-1];
+  print(file.path);
+  String filename = file.path.split("/").last;
   Reference storageRef = FirebaseStorage.instance.ref();
 
 // Create a reference to 'images/mountains.jpg'

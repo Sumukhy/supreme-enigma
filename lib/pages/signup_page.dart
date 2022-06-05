@@ -1,11 +1,11 @@
-import 'package:accident_detection/service/auth.dart';
-import 'package:accident_detection/widget/custom_dialog.dart';
-import 'package:accident_detection/widget/custom_raised_button.dart';
+import 'package:AMW/service/auth.dart';
+import 'package:AMW/widget/custom_raised_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
+import '../widget/custom_dialog.dart';
 import 'login_page.dart';
 
 /// This is signup page
@@ -203,14 +203,18 @@ class _SignUpPageState extends State<SignUpPage> {
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
                                     decoration: customInputDecoration(
-                                      "Department ID",
+                                      category == 'hospital'
+                                          ? "Hospital ID"
+                                          : "Department ID",
                                       SizedBox(),
                                       Icon(Icons.assured_workload_outlined),
                                     ),
                                     controller: _confirmpassword,
                                     validator: (val) {
                                       if (val!.isEmpty) {
-                                        return "Please enter department ID";
+                                        return category == 'hospital'
+                                            ? "Please enter hospital ID"
+                                            : "Please enter department ID";
                                       } else if (category == "hospital" &&
                                           ![
                                             "HOSPITAL1EW18CS140",

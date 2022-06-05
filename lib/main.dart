@@ -1,4 +1,4 @@
-import 'package:accident_detection/pages/init_page.dart';
+import 'package:AMW/pages/init_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';

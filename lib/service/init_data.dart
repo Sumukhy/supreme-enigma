@@ -1,8 +1,7 @@
-import 'package:accident_detection/constants.dart';
-import 'package:accident_detection/models/user_data.dart';
-import 'package:accident_detection/widget/show_error_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../constants.dart';
+import '../models/user_data.dart';
 import 'auth.dart';
 
 class InitData {

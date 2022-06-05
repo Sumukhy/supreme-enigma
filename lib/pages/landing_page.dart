@@ -1,9 +1,8 @@
-import 'package:accident_detection/pages/signup_page.dart';
-import 'package:accident_detection/widget/signinupbutton.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:AMW/pages/signup_page.dart';
+import 'package:AMW/widget/signinupbutton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import '../../main.dart';
 import 'login_page.dart';
 
 /// This page is loaded after the init page and shown only when unauthenticated.

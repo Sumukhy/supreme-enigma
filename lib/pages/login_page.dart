@@ -1,15 +1,15 @@
-import 'package:accident_detection/pages/launching_page.dart';
-import 'package:accident_detection/pages/signup_page.dart';
-import 'package:accident_detection/service/auth.dart';
-import 'package:accident_detection/widget/custom_dialog.dart';
-import 'package:accident_detection/widget/custom_raised_button.dart';
-import 'package:accident_detection/widget/custom_text_field.dart';
+import 'package:AMW/pages/signup_page.dart';
+import 'package:AMW/service/auth.dart';
+import 'package:AMW/widget/custom_raised_button.dart';
+import 'package:AMW/widget/custom_text_field.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
+import '../widget/custom_dialog.dart';
+import 'launching_page.dart';
 
 TextEditingController userEmailController = TextEditingController();
 
