@@ -271,7 +271,7 @@ class _LoginPageState extends State<LoginPage> {
                                     progress.dismiss();
                                     if (isSuccess) {
                                       userEmailController.text = "";
-                                      Get.to(() => LaunchingPage());
+                                      // Get.to(() => LaunchingPage());
                                       // Navigator.pop(
                                       //     context); // don't remove or else it won't redirect to launching page
                                     }

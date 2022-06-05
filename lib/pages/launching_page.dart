@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:AMW/constants.dart';
 import 'package:AMW/pages/user_launching_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -49,7 +50,15 @@ class _LoadInitDataandLaunchingPageState
               .subscribeToTopic(MyAuth().getCurrentUserId());
           FirebaseMessaging.instance.subscribeToTopic('all');
 
-          return LaunchingPage();
+          return FutureBuilder(
+              future: Future.delayed(Duration(seconds: 1)),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Scaffold(
+                      body: Center(child: CircularProgressIndicator()));
+                }
+                return LaunchingPage();
+              });
         } else {
           return const Scaffold(
             body: Text("Something Went wrong"),
@@ -82,6 +91,7 @@ class _LaunchingPageState extends State<LaunchingPage> {
   @override
   void initState() {
     super.initState();
+    kLogger.d(InitData.owner!.userType);
     positionStream =
         Geolocator.getPositionStream(locationSettings: locationSettings);
   }
@@ -124,6 +134,11 @@ class _LaunchingPageState extends State<LaunchingPage> {
                   StreamBuilder<Position>(
                       stream: positionStream,
                       builder: (context, snapshot) {
+                        if (snapshot.data == null) {
+                          return const Text(
+                            "Waiting for location",
+                          );
+                        }
                         latitude = snapshot.data?.latitude ?? 1.1;
                         longitude = snapshot.data?.longitude ?? 1.1;
                         if (snapshot.hasData) {

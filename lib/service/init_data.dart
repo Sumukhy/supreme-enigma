@@ -13,6 +13,7 @@ class InitData {
     }
     await getUserData();
     kLogger.i(owner);
+    // Future.delayed(Duration(seconds: 5));
     return this;
   }
 
@@ -32,7 +33,7 @@ Future<UserData?> getUserData() async {
       .collection('users')
       .doc(MyAuth().getCurrentUserId())
       .get()
-      .then((value) {
+      .then((value) async {
     if (value.exists) {
       kLogger.d(value.data());
       InitData.owner = UserData.fromJson(value.data()!);
