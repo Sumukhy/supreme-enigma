@@ -153,50 +153,52 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           category == "user"
-                              ? Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: TextFormField(
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        decoration: customInputDecoration(
-                                          "Family Member Name",
-                                          SizedBox(),
-                                          Icon(Icons.person),
-                                        ),
-                                        controller: _familyName,
-                                        validator: (val) {
-                                          if (val!.isEmpty) {
-                                            return "Please enter family member name";
-                                          } else {
-                                            return null;
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: TextFormField(
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        decoration: customInputDecoration(
-                                          "Family Email ID",
-                                          SizedBox(),
-                                          Icon(Icons.email),
-                                        ),
-                                        controller: _familyEmail,
-                                        validator: (val) {
-                                          if (val!.isEmpty) {
-                                            return "Please enter password to confirm";
-                                          } else {
-                                            return null;
-                                          }
-                                        },
-                                      ),
-                                    )
-                                  ],
-                                )
+                              ?
+                              // Column(
+                              //     children: [
+                              //       Padding(
+                              //         padding: const EdgeInsets.all(8.0),
+                              //         child: TextFormField(
+                              //           autovalidateMode:
+                              //               AutovalidateMode.onUserInteraction,
+                              //           decoration: customInputDecoration(
+                              //             "Family Member Name",
+                              //             SizedBox(),
+                              //             Icon(Icons.person),
+                              //           ),
+                              //           controller: _familyName,
+                              //           validator: (val) {
+                              //             if (val!.isEmpty) {
+                              //               return "Please enter family member name";
+                              //             } else {
+                              //               return null;
+                              //             }
+                              //           },
+                              //         ),
+                              //       ),
+                              //       Padding(
+                              //         padding: const EdgeInsets.all(8.0),
+                              //         child: TextFormField(
+                              //           autovalidateMode:
+                              //               AutovalidateMode.onUserInteraction,
+                              //           decoration: customInputDecoration(
+                              //             "Family Email ID",
+                              //             SizedBox(),
+                              //             Icon(Icons.email),
+                              //           ),
+                              //           controller: _familyEmail,
+                              //           validator: (val) {
+                              //             if (val!.isEmpty) {
+                              //               return "Please enter password to confirm";
+                              //             } else {
+                              //               return null;
+                              //             }
+                              //           },
+                              //         ),
+                              //       )
+                              //     ],
+                              //   )
+                              SizedBox()
                               : Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextFormField(
@@ -209,7 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       SizedBox(),
                                       Icon(Icons.assured_workload_outlined),
                                     ),
-                                    controller: _confirmpassword,
+                                    controller: _departmentID,
                                     validator: (val) {
                                       if (val!.isEmpty) {
                                         return category == 'hospital'
